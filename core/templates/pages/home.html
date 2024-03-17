@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section id='hero' class="text-zinc-500 min-h-screen bg-home">
+        <div class="flex flex-col justify-center items-center">
+            <a href="news/">
+                <h2 class="text-2xl text-[#F7AB0A]/50 text-center mt-10">NEWS</h2>
+            </a>
+
+            {% comment %} <div class="mt-10 flex items-center text-center">
+                {% for new in news %}
+                    <div class="flex flex-col md:flex-row items-center justify-center text-center">
+                        <a href="{{ new.url }}" class="space-y-4" target="_blank">
+                            <h2 class="text-base">{{new.title}}</h2>
+                            <img 
+                                src="{{ new.thumbnail.url }}" 
+                                alt="{{ new.name }}"
+                                class="rounded-lg w-36 mx-auto"
+                            >
+                            <p class="text-[12px]">{{ new.original_released_date }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div> {% endcomment %}
+            <div class="carousel relative shadow-2xl bg-white">
+                <div class="carousel-inner overflow-hidden">
+                    {% for new in news %}
+                        <div class="carousel-item relative">
+                            <img 
+                                src="{{ new.thumbnail.url }}" 
+                                alt="{{ new.name }}"
+                                class="rounded-lg w-full"
+                            >
+                        </div>
+                    {% endfor %}
+
+                    {% for video in videos %}
+                        <div class="carousel-item relative">
+                            <iframe src="{{ video.video_url }}" allowfullscreen frameborder="0" class="w-full"></iframe>
+                        </div>
+                    {% endfor %}
+
+                    {% for album in albums %}
+                        <div class="carousel-item relative">
+                            <img 
+                                src="{{ album.cover.url }}" 
+                                alt="{{ album.name }}"
+                                class="w-full"
+                            >
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-l">Anterior</button>
+                <button class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 bg-black text-white px-4 py-2 rounded-r">Próximo</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="latest-video" class="min-h-screen flex flex-col justify-center items-center bg-slate-900">
+        <h2 class="text-4xl text-[#F7AB0A]/50 text-center">Latest Video</h2>
+    
+        {% for video in videos %}
+            <div class="mt-10 flex flex-col md:flex-row justify-between items-center max-w-xl">
+                <div class="flex flex-col mr-2 justify-center text-center space-y-2">
+                    <h2 class="text-xl font-bold text-center text-[#F7AB0A]/50">" {{ video.title }} "</h2>
+                    <button class="text-zinc-500 border border-[#F7AB0A]/50 rounded-xl w-48 hover:bg-red-900 hover:text-zinc-300 hover:border-red-900 transition-all duration-1000 mx-auto">
+                        <a href="https://www.youtube.com/channel/UCrxcLp3nDRXx7-8PwAgQu5w" target="_blank">Subscribe on youtube</a>
+                    </button>
+                </div>
+                <iframe src="{{ video.video_url }}" allowfullscreen frameborder="0"></iframe>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section id="merchandising min-h-screen">
+        <div class="text-[#F7AB0A]/50 text-center justify-center">
+            <h2>Wanna buy our material?</h2>
+            <p><a href="">Here</a> is the right place</p>
+        </div>
+    </section>
+    
+
+{% endblock content %}

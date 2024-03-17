@@ -1,0 +1,98 @@
+{% load static tailwind_tags %}
+{% load static %}
+{% load django_browser_reload %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Elenion | Oficcial Website</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/all.min.css" %}" />
+		{% tailwind_css %}
+	</head>
+
+	<body class="bg-slate-950">
+
+		{% block navbar %}
+			<div class="flex justify-center items-center">
+				{% comment %} LEFT SIDE {% endcomment %}
+				<div>
+					<nav class="flex text-[#F7AB0A]/50 mt-5">
+						<ul class="flex items-center justify-center mx-auto space-x-10 p-5 text-xl">
+							<li>
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<a href="about/">About</a>
+							</li>
+							<li>
+								<a href="">Music</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				{% comment %} CENTER {% endcomment %}
+				<div class="hidden md:inline-flex">
+					<a href="/">
+						<img src="media/emblem.png" alt="Elenion Emblem" class="h-16">
+					</a>
+				</div>
+
+				{% comment %} RIGHT SIDE {% endcomment %}
+				<div>
+					<nav class="flex text-[#F7AB0A]/50 mt-5">
+						<ul class="flex items-center justify-center mx-auto space-x-10 p-5 text-xl">
+							<li>
+								<a href="/">News</a>
+							</li>
+							<li>
+								<a href="about/">Community</a>
+							</li>
+							<li>
+								<a href="">Contacts</a>
+							</li>
+						</ul>
+					</nav>
+	
+				</div>
+			</div>
+		{% endblock navbar %}
+
+		{% block content %}{% endblock content %}
+
+		{% block footer %}
+			<footer class="text-[#F7AB0A]/50 flex justify-between items-center p-5">
+				<div class="relative">
+					<ul class="flex space-x-5">
+						<li>
+							<a href="/">
+								<i class="fa-brands fa-instagram"></i>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="fa-brands fa-facebook"></i>
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<i class="fa-brands fa-twitter"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="relative">
+					<a href="privacy/">Privacy Policy</a>
+				</div>
+			</footer>
+		{% endblock footer %}
+
+		<script></script>
+
+		{% django_browser_reload_script %}
+	</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section class="text-zinc-500 snap-center" id="about">
+        <h1 class="text-[#F7AB0A]/50">ABOUT</h1>
+
+        <div class="flex flex-col justify-center text-center items-center">
+            {% for info in infos %}
+                <div class="flex items-center flex-col">
+                    <img 
+                        src="{{ info.emblem.url }}" 
+                        alt=""
+                        class="w-32 h-32 rounded-xl"
+                    >
+                    <p class="">
+                        {{ info.description }}
+                    </p>
+                </div>
+
+                <div>
+                    <div>
+                        <h3 class="text-2xl">Record Label</h3>
+                        <h4 class="text-xl">{{ info.label }}</h4>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl">Management</h3>
+                        <h4>{{ info.management }}</h4>
+                        <a href="{{ info.management_email }}" target="_blank">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

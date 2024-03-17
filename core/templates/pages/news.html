@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section class="text-zinc-500 snap-center" id="news">
+        <h1 class="text-[#F7AB0A]/50 text-2xl font-bold text-center mt-10">NEWS</h1>
+
+        <div class="grid grid-cols-3 space-y-4 mt-4">
+            {% for new in news %}
+                <div class="flex justify-center items-center text-center">
+                    <a href="{% url 'individual_new' slug=new.slug %}" class="space-y-2">
+                        <h2 class="text-center">{{new.title}}</h2>
+                        <img src="{{new.thumbnail.url}}" alt="{{new.title}}" class="w-36 mx-auto mt-2">
+                        <p class="text-xs">{{ new.created_at }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
